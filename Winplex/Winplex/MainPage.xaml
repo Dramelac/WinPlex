@@ -23,8 +23,15 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Name="GeolocStatus">Geolocalisation: Loading ...</TextBlock>
-            <TextBlock Grid.Column="2" Name="Coord" TextAlignment="Right"></TextBlock>
+            <TextBlock Grid.Column="0" Name="GeolocStatus" VerticalAlignment="Center">Geolocalisation: Loading ...</TextBlock>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" PlaceholderText="Enter custom postal code" Name="PostalCodeInput" ></TextBox>
+                <Button Grid.Column="1" Click="FindPostalCode">Search</Button>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="2">

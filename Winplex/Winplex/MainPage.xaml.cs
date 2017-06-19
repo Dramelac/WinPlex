@@ -45,9 +45,9 @@ namespace Winplex
             if (Geolocalisation.Status == "Enable")
             {
                 var pos = await Geolocalisation.GeoPosition();
-                Coord.Text = string.Format("Lat: {0}, Long: {1}",
+                /*Coord.Text = string.Format("Lat: {0}, Long: {1}",
                     pos.Coordinate.Point.Position.Latitude,
-                    pos.Coordinate.Point.Position.Longitude);
+                    pos.Coordinate.Point.Position.Longitude);*/
 
                 Weather_API data = await OpenWeatherAPI.GetWeatherData(pos.Coordinate.Point.Position.Latitude,
                     pos.Coordinate.Point.Position.Longitude);
@@ -98,5 +98,10 @@ namespace Winplex
 
         }
 
+        private async void FindPostalCode(object sender, RoutedEventArgs e)
+        {
+            var result = await OpenWeatherAPI.GetWeatherDataFromZipCode(PostalCodeInput.Text);
+            if (result != null) this.LoadData(result);
+        }
     }
 }
