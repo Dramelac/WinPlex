@@ -26,6 +26,8 @@
             <TextBlock Grid.Column="0" Name="GeolocStatus">Geolocalisation: Loading ...</TextBlock>
             <TextBlock Grid.Column="2" Name="Coord" TextAlignment="Right"></TextBlock>
         </Grid>
+        
+        <TextBlock Name="data" Grid.Row="2"></TextBlock>
 
     </Grid>
 </Page>

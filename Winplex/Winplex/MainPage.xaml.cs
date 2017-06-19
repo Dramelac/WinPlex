@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Winplex.models;
 using Winplex.Utils;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -39,10 +40,13 @@ namespace Winplex
             await Geolocalisation.Init();
             var pos = await Geolocalisation.GeoPosition();
             GeolocStatus.Text = "Geolocalisation: " + Geolocalisation.Status;
-            Coord.Text = String.Format("Lat: {0}, Long: {1}, {2}", 
+            Coord.Text = string.Format("Lat: {0}, Long: {1}", 
                 pos.Coordinate.Point.Position.Latitude, 
-                pos.Coordinate.Point.Position.Longitude,
-                pos.CivicAddress.PostalCode);
+                pos.Coordinate.Point.Position.Longitude);
+
+            Weather_API data = await OpenWeatherAPI.GetWeatherData(pos.Coordinate.Point.Position.Latitude,
+                pos.Coordinate.Point.Position.Longitude);
+            this.data.Text = string.Format("City {0}, Message {1}, Cnt {2}", data.city.name, data.message, data.cnt);
         }
     }
 }
