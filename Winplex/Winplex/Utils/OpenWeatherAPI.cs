@@ -18,13 +18,12 @@ namespace Winplex.Utils
             var http = new HttpClient();
             var response = await http.GetAsync("http://api.openweathermap.org/data/2.5/forecast?lat="+latitude+"&lon="+longitude+"&APPID="+API_KEY);
             var result = await response.Content.ReadAsStringAsync();
-            //return result;
+            
             var serializer = new DataContractJsonSerializer(typeof(Weather_API));
             var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(result));
             var data = (Weather_API)serializer.ReadObject(memoryStream);
             return data;
         }
-
         
     }
 }

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Winplex.models;
 using Winplex.Utils;
@@ -30,11 +31,10 @@ namespace Winplex
         public MainPage()
         {
             this.InitializeComponent();
-            this.InitGeoStatus();
-
+            this.Page_Loaded();
         }
 
-        public async void InitGeoStatus()
+        public async void Page_Loaded()
         {
             Geolocalisation = new Geolocalisation();
             await Geolocalisation.Init();
@@ -46,7 +46,26 @@ namespace Winplex
 
             Weather_API data = await OpenWeatherAPI.GetWeatherData(pos.Coordinate.Point.Position.Latitude,
                 pos.Coordinate.Point.Position.Longitude);
-            this.data.Text = string.Format("City {0}, Message {1}, Cnt {2}", data.city.name, data.message, data.cnt);
+            this.LoadData(data);
         }
+
+        public void LoadData(Weather_API data)
+        {
+            this.MainTitle.Text = "Today";
+            this.MainCity.Text = data.city.name;
+            this.MainWeather.Text = data.list.ElementAt(0).weather.ElementAt(0).main;
+            this.MainDesc.Text = data.list.ElementAt(0).weather.ElementAt(0).description;
+            this.MainDeg.Text = Weather_Main.KelvinToCelsiusString(data.list.ElementAt(0).main.temp);
+
+            //Weather Image
+            string icon = string.Format("ms-appx:///Assets/icon/{0}.png", data.list.ElementAt(0).weather.ElementAt(0).icon);
+            this.MainImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
+
+            //Wind arrow
+            this.MainWind.Visibility = Visibility.Visible;
+            this.MainWind.RenderTransform = new RotateTransform { Angle = data.list.ElementAt(0).wind.deg, CenterX = 50, CenterY = 50};
+            this.MainWindSpeed.Text = "Wind speed : " + data.list.ElementAt(0).wind.speed + " m/s";
+        }
+
     }
 }

@@ -27,7 +27,50 @@
             <TextBlock Grid.Column="2" Name="Coord" TextAlignment="Right"></TextBlock>
         </Grid>
         
-        <TextBlock Name="data" Grid.Row="2"></TextBlock>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Name="MainTitle" TextAlignment="Center" FontSize="36px">Loading ...</TextBlock>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Name="MainCity" TextAlignment="Center" FontSize="30px"></TextBlock>
+            <Image Name="MainWind"
+                   Width="100px"
+                   Height="100px"
+                   Visibility="Collapsed"
+                   HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Source="Assets/icon/arrow.png"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Name="MainWindSpeed" 
+                       TextAlignment="Center" 
+                       VerticalAlignment="Bottom"></TextBlock>
+            
+            
+            <Image Name="MainImage"
+               HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Name="MainWeather" TextAlignment="Center"></TextBlock>
+                <TextBlock Grid.Row="1" Name="MainDesc" TextAlignment="Center"></TextBlock>
+                <TextBlock Grid.Row="2" Name="MainDeg" TextAlignment="Center"></TextBlock>
+            </Grid>
+            
+            
+            
+        </Grid>
+        
 
     </Grid>
 </Page>

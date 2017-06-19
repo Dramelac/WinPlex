@@ -111,6 +111,25 @@
     <None Include="Winplex_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icon\01d.png" />
+    <Content Include="Assets\icon\01n.png" />
+    <Content Include="Assets\icon\02d.png" />
+    <Content Include="Assets\icon\02n.png" />
+    <Content Include="Assets\icon\03d.png" />
+    <Content Include="Assets\icon\03n.png" />
+    <Content Include="Assets\icon\04d.png" />
+    <Content Include="Assets\icon\04n.png" />
+    <Content Include="Assets\icon\09d.png" />
+    <Content Include="Assets\icon\09n.png" />
+    <Content Include="Assets\icon\10d.png" />
+    <Content Include="Assets\icon\10n.png" />
+    <Content Include="Assets\icon\11d.png" />
+    <Content Include="Assets\icon\11n.png" />
+    <Content Include="Assets\icon\13d.png" />
+    <Content Include="Assets\icon\13n.png" />
+    <Content Include="Assets\icon\50d.png" />
+    <Content Include="Assets\icon\50n.png" />
+    <Content Include="Assets\icon\arrow.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

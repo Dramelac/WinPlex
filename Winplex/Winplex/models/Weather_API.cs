@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace Winplex.models
 {
     [DataContract]
-    class Weather_API
+    public class Weather_API
     {
         [DataMember]
         public string cod { get; set; }
@@ -27,7 +28,7 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class City
+    public class City
     {
         [DataMember]
         public double id { get; set; }
@@ -46,7 +47,7 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class Coord
+    public class Coord
     {
         [DataMember]
         public double lat { get; set; }
@@ -56,7 +57,7 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class List_Weather_API
+    public class List_Weather_API
     {
         [DataMember]
         public double dt { get; set; }
@@ -66,6 +67,9 @@ namespace Winplex.models
 
         [DataMember]
         public Weather_Main main { get; set; }
+
+        [DataMember]
+        public Weather[] weather { get; set; }
 
         [DataMember]
         public Cloud clouds { get; set; }
@@ -78,7 +82,7 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class Weather_Main
+    public class Weather_Main
     {
         [DataMember]
         public double temp { get; set; }
@@ -104,10 +108,20 @@ namespace Winplex.models
         [DataMember]
         public double temp_kf { get; set; }
 
+        public static double KelvinToCelsius(double kelvin)
+        {
+            return kelvin - 273.15;
+        }
+
+        public static string KelvinToCelsiusString(double kelvin)
+        {
+            return (kelvin - 273.15).ToString(CultureInfo.CurrentCulture) + " °C";
+        }
+
     }
 
     [DataContract]
-    class Weather
+    public class Weather
     {
 
         [DataMember]
@@ -125,14 +139,14 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class Cloud
+    public class Cloud
     {
         [DataMember]
         public int all { get; set; }
     }
 
     [DataContract]
-    class Wind
+    public class Wind
     {
         [DataMember]
         public double speed { get; set; }
@@ -142,7 +156,7 @@ namespace Winplex.models
     }
 
     [DataContract]
-    class Sys
+    public class Sys
     {
         [DataMember]
         public string pod { get; set; }
