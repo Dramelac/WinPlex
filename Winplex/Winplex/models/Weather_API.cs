@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Winplex.models
 {
@@ -76,9 +71,6 @@ namespace Winplex.models
 
         [DataMember]
         public Wind wind { get; set; }
-
-        [DataMember]
-        public Sys sys { get; set; }
     }
 
     [DataContract]
@@ -123,7 +115,6 @@ namespace Winplex.models
     [DataContract]
     public class Weather
     {
-
         [DataMember]
         public int id { get; set; }
 
@@ -153,12 +144,5 @@ namespace Winplex.models
 
         [DataMember]
         public double deg { get; set; }
-    }
-
-    [DataContract]
-    public class Sys
-    {
-        [DataMember]
-        public string pod { get; set; }
     }
 }
