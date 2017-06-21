@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Winplex.DAL;
 using Winplex.models;
 using Winplex.Utils;
 
@@ -28,10 +29,17 @@ namespace Winplex
     {
         private Geolocalisation Geolocalisation { get; set; }
 
+        private string UseGeo { get; set; }
+
+        private string LastLocation { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
+            UseGeo = Database.GetDatabase().ShowSetting("UseGeo");
+            LastLocation = Database.GetDatabase().ShowSetting("LastLocation");
             this.Page_Loaded();
+
         }
 
         public async void Page_Loaded()
