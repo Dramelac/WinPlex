@@ -75,7 +75,7 @@ namespace Winplex.DAL
         {
             var query = Conn.Table<Settings>();
 
-            var result = query.First(q => q.Key == key);
+            var result = query.FirstOrDefault(q => q.Key == key);
 
             return result?.Value;
         }

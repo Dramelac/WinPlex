@@ -27,10 +27,12 @@
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" PlaceholderText="Enter custom postal code" Name="PostalCodeInput" ></TextBox>
                 <Button Grid.Column="1" Click="FindPostalCode">Search</Button>
+                <Button Grid.Column="2" Click="Reset">X</Button>
             </Grid>
         </Grid>
 
